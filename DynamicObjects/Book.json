@@ -1,0 +1,12 @@
+{
+  "Title": "The Rider of the Storm",
+  "Author": "John Williams",
+  "ISBN": "987654321098",
+  "Contents": [ "Chapter1", "Chapter2", "Chapter3" ], 
+  "Publisher": {
+    "Name": "Double Whammy Publishing",
+    "Address": "375 Hudson Street",
+    "City": "New York, NY", 
+    "Zip": "10014" 
+  } 
+}
