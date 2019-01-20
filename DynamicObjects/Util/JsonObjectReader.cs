@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace DynamicObjects.Util
 {
@@ -17,7 +18,7 @@ namespace DynamicObjects.Util
 
             return JsonConvert.DeserializeObject(jsonFile, type);
         }
-        public dynamic LoadDynamic(string filename)
+        public JObject LoadJsonObject(string filename)
         {
             dynamic objDynamic=null;
             if (!File.Exists(filename))
@@ -25,7 +26,7 @@ namespace DynamicObjects.Util
 
             var jsonFile = File.ReadAllText(filename);
 
-            return JsonConvert.DeserializeObject<dynamic>(jsonFile);
+            return JsonConvert.DeserializeObject<JObject>(jsonFile);
         }
     }
 }

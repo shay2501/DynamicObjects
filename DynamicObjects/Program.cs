@@ -20,33 +20,25 @@ namespace DynamicObjects
             book.publishDate = DateTime.Parse("01/15/2015");
             book.authors = new JArray("Margaret Jones", "Eli Mather", "Ted Smith");
 
-            var childTokens = book.ChildrenTokens;
-
-            var dynamo = new DynamicJSONObject(JsonConvert.SerializeObject(book));
-            //var props = dynamo.Properties();
-            //Console.WriteLine(dynamo.GetType());
-            //Console.WriteLine(dynamo.Dynamo.title);
-
             /*------------------------------------------------------*/
             var objectFileDir = Directory.GetCurrentDirectory();
             var objectFile = Path.Combine(objectFileDir, "Book.json");
 
-            var obj = objectReader.LoadDynamic(objectFile);
+            var obj = objectReader.LoadJsonObject(objectFile);
 
             Console.WriteLine("//////////////////////////////////////////////");
-            foreach (var token in obj)
+            foreach (var token in obj.Properties())
             {
-                Console.WriteLine(token.Name + " " + token.Value);
+                Console.WriteLine(token.Name + " - " + token.Value);
+                Console.WriteLine("Token indexed: " + obj[token.Name]);
             }
-            Console.WriteLine((JObject)obj.Count);
-            Console.WriteLine(obj);
 
-            Console.Write("Title = " + obj.Title);
+            //var foo = obj.Where(p => p.Name == "Title");//.Select(p => p.Value);
 
             //TO DO
             /*
-             * Create an object with methods and serialize it
-             * Deserialze the object to see if methods come back
+             * register methods on objects - store in JSON file with object properties
+             * get data on the property, search the object properties?
              */
             if (Debugger.IsAttached)
             {
